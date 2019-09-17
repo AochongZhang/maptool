@@ -50,18 +50,31 @@ window.onload = function(){
         console.log("路径数组更新 " + path);
     }
 
+
     // 生成json
-    $("#gen").click(function () {
+    function genJson () {
         var genData = [];
         for (var i = 0; i < path.length; i++) {
             var latLng = path[i];
-            var data = {
-                latitude: latLng.lat,
-                longitude: latLng.lng
-            }
+            var data = {}
+            var latitudeName = $("#latitude-name").val();
+            var longitudeName = $("#longitude-name").val();
+            data[latitudeName] = latLng.lat;
+            data[longitudeName] = latLng.lng;
+            // var data = {
+            //     latitude: latLng.lat,
+            //     longitude: latLng.lng
+            // }
             genData.push(data);
         }
         setTextValue(JSON.stringify(genData, null, 2));
+    }
+
+    $("#gen").click(function () {
+        genJson();
+    })
+    $("#gen2").click(function () {
+        genJson();
     })
 
     // 闭合路线
