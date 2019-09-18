@@ -82,11 +82,10 @@
         <!-- 操作栏 -->
         <div id="dashboard">
             <div id="btns">
-                <button id="gen" type="button" class="btn btn-success m-3 shadow" data-toggle="modal" data-target="#genTextModel">
-                    生成
-                </button>
+                <button id="gen" type="button" class="btn btn-success m-3 shadow" data-toggle="modal" data-target="#genTextModel">生成</button>
                 <button id="close" type="button" class="btn btn-primary m-3 shadow">闭合</button>
                 <button id="clean" type="button" class="btn btn-danger m-3 shadow">清空</button>
+                <button id="analyze" type="button" class="btn btn-primary m-3 shadow" data-toggle="modal" data-target="#analyzeTextModel">解析</button>
             </div>
 
             <!-- 生成框 -->
@@ -94,7 +93,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="genTextModelTitle">Json格式</h5>
+                            <h5 class="modal-title" id="genTextModelTitle">生成Json格式</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -118,6 +117,40 @@
                         </div>
                         <div class="modal-footer">
                             <button id="copy" type="button" class="btn btn-primary" data-dismiss="modal" data-clipboard-target="#genText">复制</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 解析框 -->
+            <div class="modal fade" id="analyzeTextModel" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="analyzeTextModelTitle">解析Json格式</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="">
+                                <div class="input-group input-group-sm mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">纬度</span>
+                                    </div>
+                                    <input type="text" class="form-control mr-2" id="latitude-name-analyze" value="latitude">
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">经度</span>
+                                    </div>
+                                    <input type="text" class="form-control mr-2" id="longitude-name-analyze" value="longitude">
+<!--                                    <button type="button" class="btn btn-primary btn-sm" id="analyze2">生成</button>-->
+                                </div>
+                            </div>
+                            <textarea id="analyzeText" class="form-control json" aria-label="With textarea" rows="20"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="doAnalyze" type="button" class="btn btn-primary" data-dismiss="modal" data-clipboard-target="#analyzeText">解析</button>
                         </div>
                     </div>
                 </div>

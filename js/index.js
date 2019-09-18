@@ -23,7 +23,6 @@ window.onload = function(){
     qq.maps.event.addListener(map, 'click', function(event) {
         path.push(new qq.maps.LatLng(event.latLng.getLat(), event.latLng.getLng()));
         polyline.setPath(path)
-        console.log("添加节点 " + path)
     });
 
     // 路线添加节点事件
@@ -47,7 +46,6 @@ window.onload = function(){
         polyline.getPath().forEach(function (i) {
             path.push(i);
         });
-        console.log("路径数组更新 " + path);
     }
 
 
@@ -70,9 +68,12 @@ window.onload = function(){
         setTextValue(JSON.stringify(genData, null, 2));
     }
 
+    // 生成
     $("#gen").click(function () {
         genJson();
     })
+
+    // 生成
     $("#gen2").click(function () {
         genJson();
     })
@@ -86,6 +87,20 @@ window.onload = function(){
     // 清除路线
     $("#clean").click(function () {
         path = []
+        polyline.setPath(path);
+    })
+
+    // 解析
+    $("#doAnalyze").click(function () {
+        var json = $("#analyzeText").val();
+        var data = JSON.parse(json);
+        var latitudeName = $("#latitude-name-analyze").val();
+        var longitudeName = $("#longitude-name-analyze").val();
+        path = [];
+        for (var i = 0; i < data.length; i++) {
+            var obj = data[i];
+            path.push(new qq.maps.LatLng(obj[latitudeName], obj[longitudeName]))
+        }
         polyline.setPath(path);
     })
 
